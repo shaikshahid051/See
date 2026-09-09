@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Partner Dashboard - Gatnora</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <h2>Gatnora Partner</h2>
+
+        <button
+            class="primary-btn"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </nav>
+
+
+    <main class="dashboard-container">
+
+        <h1>Partner Dashboard</h1>
+
+        <div class="dashboard-stats">
+
+            <div class="stat-card">
+
+                <h3>Total Deliveries</h3>
+
+                <h2 id="deliveryCount">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Total Earnings</h3>
+
+                <h2 id="earnings">
+                    ₹0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <h2>Available Delivery Requests</h2>
+
+        <div id="availableCount"></div>
+
+        <div id="availableOrders">
+
+            <p>Loading available orders...</p>
+
+        </div>
+
+
+        <h2>My Accepted Deliveries</h2>
+
+        <div id="partnerOrders">
+
+            <p>Loading your deliveries...</p>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

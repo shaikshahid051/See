@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Gatnora Admin Login</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+        }
+
+        .login-box {
+            width: 380px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #111;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            color: red;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #111;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="login-box">
+
+        <h1>Gatnora</h1>
+
+        <p class="subtitle">
+            Admin Login
+        </p>
+
+
+        <form id="adminLoginForm">
+
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Admin Email"
+                required
+            >
+
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Admin Password"
+                required
+            >
+
+
+            <button type="submit">
+                Login as Admin
+            </button>
+
+
+        </form>
+
+
+        <p id="message"></p>
+
+
+        <a href="login.html" class="back-link">
+            Back to User Login
+        </a>
+
+
+    </div>
+
+
+
+    <script>
+
+        // =========================
+        // VERCEL BACKEND
+        // =========================
+
+        const API_URL = "https://gatenora.vercel.app";
+
+
+        // =========================
+        // ADMIN LOGIN
+        // =========================
+
+        document
+            .getElementById("adminLoginForm")
+            .addEventListener("submit", async function (e) {
+
+                e.preventDefault();
+
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+                const message =
+                    document.getElementById("message");
+
+
+                message.textContent = "Logging in...";
+
+
+                try {
+
+                    const response = await fetch(
+                        `${API_URL}/api/admin/login`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                email: email,
+                                password: password
+                            })
+                        }
+                    );
+
+
+                    const data = await response.json();
+
+
+                    console.log("Admin Login Response:", data);
+
+
+                    if (!response.ok || !data.success) {
+
+                        message.textContent =
+                            data.message || "Admin login failed.";
+
+                        return;
+                    }
+
+
+                    // =========================
+                    // SAVE ADMIN TOKEN
+                    // =========================
+
+                    localStorage.setItem(
+                        "adminToken",
+                        data.token
+                    );
+
+
+                    // Save admin information
+
+                    if (data.admin) {
+
+                        localStorage.setItem(
+                            "admin",
+                            JSON.stringify(data.admin)
+                        );
+
+                    }
+
+
+                    message.style.color = "green";
+
+                    message.textContent =
+                        "Login successful!";
+
+
+                    // =========================
+                    // OPEN DASHBOARD
+                    // =========================
+
+                    setTimeout(function () {
+
+                        window.location.href =
+                            "admin-dashboard.html";
+
+                    }, 500);
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Admin login error:",
+                        error
+                    );
+
+
+                    message.style.color = "red";
+
+                    message.textContent =
+                        "Could not connect to server.";
+
+                }
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>

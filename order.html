@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Request Delivery | Gatnora</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        <span>G</span>
+        Gatnora
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+    </div>
+
+</nav>
+
+
+<div class="form-container">
+
+    <h1>Request Delivery</h1>
+
+    <p class="form-subtitle">
+        From Gate to Room.
+    </p>
+
+
+    <form id="orderForm">
+
+        <div class="form-group">
+            <label>Student Name</label>
+
+            <input type="text"
+                   id="studentName"
+                   required>
+        </div>
+
+
+        <div class="form-group">
+            <label>Hostel Name</label>
+
+            <input type="text"
+                   id="hostel"
+                   required>
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>Block</label>
+
+                <input type="text"
+                       id="block"
+                       required>
+            </div>
+
+
+            <div class="form-group">
+                <label>Room Number</label>
+
+                <input type="text"
+                       id="room"
+                       required>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label>Phone Number</label>
+
+            <input type="tel"
+                   id="phone"
+                   required>
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Delivery Type</label>
+
+            <select id="deliveryType" required>
+
+                <option value="">
+                    Select Delivery Type
+                </option>
+
+                <option>Food</option>
+                <option>Parcel</option>
+                <option>Snacks</option>
+                <option>Groceries</option>
+                <option>Personal Care</option>
+                <option>Other</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Item Details</label>
+
+            <textarea
+                id="itemDetails"
+                placeholder="Example: Swiggy order, Amazon parcel..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Delivery Instructions</label>
+
+            <textarea
+                id="instructions"
+                placeholder="Example: Call me when you reach my block"
+            ></textarea>
+
+        </div>
+
+
+        <div class="fee-card">
+
+            <h3>Delivery Fee</h3>
+
+            <div>
+                <span>Partner Earning</span>
+                <strong>₹7</strong>
+            </div>
+
+            <div>
+                <span>Platform Fee</span>
+                <strong>₹3</strong>
+            </div>
+
+            <hr>
+
+            <div class="total">
+                <span>Total</span>
+                <strong>₹10</strong>
+            </div>
+
+        </div>
+
+
+        <button type="submit"
+                class="primary-btn full-button">
+
+            Request Delivery
+
+        </button>
+
+    </form>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
